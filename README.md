@@ -2,6 +2,8 @@
 
 A modern web application built with Laravel to organize, manage, and quickly access your AI prompts. Perfect for ChatGPT users, content creators, and developers.
 
+**Live Demo:** [https://ai-prompt-manager-ssxy.onrender.com](https://ai-prompt-manager-ssxy.onrender.com)
+
 ## Features
 
 - **Prompt Management** — Create, view, and organize AI prompts with titles, categories, and descriptions
@@ -18,9 +20,9 @@ A modern web application built with Laravel to organize, manage, and quickly acc
 
 | Technology | Purpose |
 |---|---|
-| Laravel 9+ | Backend Framework |
+| Laravel 8 | Backend Framework |
 | PHP 8.x | Server-side Language |
-| MySQL | Database |
+| MySQL / SQLite | Database |
 | Bootstrap 5 | UI Components |
 | Alpine.js | Interactive Elements |
 | Inter Font | Typography |
@@ -40,7 +42,7 @@ A modern web application built with Laravel to organize, manage, and quickly acc
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/yourusername/ai_prompt_manager.git
+git clone https://github.com/GeethmiUduwana/ai_prompt_manager.git
 cd ai_prompt_manager
 ```
 
