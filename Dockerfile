@@ -24,7 +24,6 @@ RUN mkdir -p /tmp \
     && composer install --no-dev --optimize-autoloader --no-interaction \
     && npm install \
     && npm run production \
-    && php artisan config:cache \
     && php artisan route:cache \
     && php artisan view:cache
 
