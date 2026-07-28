@@ -20,7 +20,7 @@ WORKDIR /app
 COPY . /app
 
 RUN rm -f .env && \
-    php -r "file_put_contents('.env', 'APP_NAME=ai-prompt-manager'.PHP_EOL.'APP_ENV=production'.PHP_EOL.'APP_DEBUG=false'.PHP_EOL.'APP_KEY=base64:'.rtrim(base64_encode(random_bytes(32))).PHP_EOL.'APP_URL=http://localhost'.PHP_EOL.'LOG_CHANNEL=stack'.PHP_EOL.'LOG_LEVEL=debug'.PHP_EOL.'DB_CONNECTION=sqlite'.PHP_EOL.'DB_DATABASE=/tmp/database.sqlite'.PHP_EOL.'CACHE_DRIVER=file'.PHP_EOL.'SESSION_DRIVER=file'.PHP_EOL.'FILESYSTEM_DRIVER=local'.PHP_EOL.'QUEUE_CONNECTION=sync'.PHP_EOL);" && \
+    php -r "file_put_contents('.env', 'APP_NAME=ai-prompt-manager'.PHP_EOL.'APP_ENV=production'.PHP_EOL.'APP_DEBUG=false'.PHP_EOL.'APP_KEY=base64:'.rtrim(base64_encode(random_bytes(32))).PHP_EOL.'APP_URL=https://ai-prompt-manager-ssxy.onrender.com'.PHP_EOL.'LOG_CHANNEL=stack'.PHP_EOL.'LOG_LEVEL=debug'.PHP_EOL.'DB_CONNECTION=sqlite'.PHP_EOL.'DB_DATABASE=/tmp/database.sqlite'.PHP_EOL.'CACHE_DRIVER=file'.PHP_EOL.'SESSION_DRIVER=file'.PHP_EOL.'FILESYSTEM_DRIVER=local'.PHP_EOL.'QUEUE_CONNECTION=sync'.PHP_EOL);" && \
     cat .env && \
     mkdir -p /tmp && touch /tmp/database.sqlite && \
     composer install --no-dev --optimize-autoloader --no-interaction && \
