@@ -12,9 +12,9 @@
     <div class="card mb-4 border-0 shadow-sm">
         <div class="card-body p-4">
 
-            <div class="d-flex justify-content-between align-items-start mb-2">
+            <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center mb-2 gap-2">
                 <h4 class="fw-bold mb-0">{{ $favorite->prompt->title }}</h4>
-                <form action="/favorite/{{ $favorite->prompt_id }}" method="POST" class="d-inline">
+                <form action="/favorite/{{ $favorite->prompt_id }}" method="POST" class="d-inline flex-shrink-0">
                     @csrf
                     @method('DELETE')
                     <button class="btn btn-sm btn-green-outline" onclick="return confirm('Remove from favorites?')">

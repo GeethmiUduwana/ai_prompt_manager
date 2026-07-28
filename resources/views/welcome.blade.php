@@ -377,6 +377,21 @@
         .faq-item.active .faq-answer {
             max-height: 300px;
         }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2rem; }
+            .hero-subtitle { font-size: 1rem; }
+            .hero-section { min-height: 90vh; }
+            .section-title { font-size: 1.6rem; }
+            .section-subtitle { font-size: 0.95rem; }
+            .feature-card { padding: 24px; }
+            .testimonial-card { padding: 24px; }
+            .faq-question { padding: 16px; font-size: 0.95rem; }
+            .stat-item h3 { font-size: 1.8rem; }
+            .container { padding-left: 20px; padding-right: 20px; }
+            .screenshot-body { padding: 16px; }
+            .hero-section::before, .hero-section::after { display: none; }
+        }
     </style>
 </head>
 <body>

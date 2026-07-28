@@ -9,7 +9,7 @@
 <div class="card border-0 shadow-sm mb-4">
     <div class="card-body p-4">
 
-        <form action="/categories" method="POST" class="d-flex gap-2 align-items-end">
+        <form action="/categories" method="POST" class="d-flex flex-column flex-sm-row gap-2 align-items-stretch align-items-sm-end">
 
             @csrf
 

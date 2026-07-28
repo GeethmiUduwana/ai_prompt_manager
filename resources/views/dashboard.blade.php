@@ -2,22 +2,22 @@
 
 @section('content')
 
-<div class="d-flex justify-content-between align-items-center mb-4">
+<div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4">
     <div>
         <h2 class="mb-1">Welcome back, {{ $user->name }}</h2>
         <p class="text-muted mb-0">Here's an overview of your AI Prompt Manager</p>
     </div>
-    <a href="/prompts/create" class="btn btn-success">
+    <a href="/prompts/create" class="btn btn-success mt-3 mt-md-0">
         + New Prompt
     </a>
 </div>
 
 <!-- Stats Cards -->
-<div class="row g-4 mb-4">
-    <div class="col-md-6 col-lg-3">
-        <div class="card p-4 border-0 shadow-sm" style="border-radius:14px;">
-            <div class="d-flex align-items-center gap-3">
-                <div class="rounded-3 d-flex align-items-center justify-content-center" style="width:50px;height:50px;background:#ecfdf5;color:#10b981;font-size:1.5rem;">
+<div class="row g-3 g-md-4 mb-4">
+    <div class="col-6 col-lg-3">
+        <div class="card p-3 p-md-4 border-0 shadow-sm" style="border-radius:14px;">
+            <div class="d-flex align-items-center gap-2 gap-md-3">
+                <div class="rounded-3 d-flex align-items-center justify-content-center flex-shrink-0" style="width:40px;height:40px;background:#ecfdf5;color:#10b981;font-size:1.2rem;">
                     &#128221;
                 </div>
                 <div>
@@ -27,10 +27,10 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6 col-lg-3">
-        <div class="card p-4 border-0 shadow-sm" style="border-radius:14px;">
-            <div class="d-flex align-items-center gap-3">
-                <div class="rounded-3 d-flex align-items-center justify-content-center" style="width:50px;height:50px;background:#eff6ff;color:#3b82f6;font-size:1.5rem;">
+    <div class="col-6 col-lg-3">
+        <div class="card p-3 p-md-4 border-0 shadow-sm" style="border-radius:14px;">
+            <div class="d-flex align-items-center gap-2 gap-md-3">
+                <div class="rounded-3 d-flex align-items-center justify-content-center flex-shrink-0" style="width:40px;height:40px;background:#eff6ff;color:#3b82f6;font-size:1.2rem;">
                     &#128193;
                 </div>
                 <div>
@@ -40,10 +40,10 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6 col-lg-3">
-        <div class="card p-4 border-0 shadow-sm" style="border-radius:14px;">
-            <div class="d-flex align-items-center gap-3">
-                <div class="rounded-3 d-flex align-items-center justify-content-center" style="width:50px;height:50px;background:#fce7f3;color:#ec4899;font-size:1.5rem;">
+    <div class="col-6 col-lg-3">
+        <div class="card p-3 p-md-4 border-0 shadow-sm" style="border-radius:14px;">
+            <div class="d-flex align-items-center gap-2 gap-md-3">
+                <div class="rounded-3 d-flex align-items-center justify-content-center flex-shrink-0" style="width:40px;height:40px;background:#fce7f3;color:#ec4899;font-size:1.2rem;">
                     &#10084;&#65039;
                 </div>
                 <div>
@@ -53,10 +53,10 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6 col-lg-3">
-        <div class="card p-4 border-0 shadow-sm" style="border-radius:14px;">
-            <div class="d-flex align-items-center gap-3">
-                <div class="rounded-3 d-flex align-items-center justify-content-center" style="width:50px;height:50px;background:#fef3c7;color:#f59e0b;font-size:1.5rem;">
+    <div class="col-6 col-lg-3">
+        <div class="card p-3 p-md-4 border-0 shadow-sm" style="border-radius:14px;">
+            <div class="d-flex align-items-center gap-2 gap-md-3">
+                <div class="rounded-3 d-flex align-items-center justify-content-center flex-shrink-0" style="width:40px;height:40px;background:#fef3c7;color:#f59e0b;font-size:1.2rem;">
                     &#128100;
                 </div>
                 <div>
