@@ -1,6 +1,7 @@
 FROM php:8.2-cli
 
-RUN apt-get update \
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
+    && apt-get update \
     && apt-get install -y --no-install-recommends \
         git \
         curl \
@@ -10,10 +11,8 @@ RUN apt-get update \
         libxml2-dev \
         libsqlite3-dev \
         nodejs \
-        npm \
     && rm -rf /var/lib/apt/lists/* \
-    && docker-php-ext-install pdo pdo_sqlite \
-    && npm install -g npm@10
+    && docker-php-ext-install pdo pdo_sqlite
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 

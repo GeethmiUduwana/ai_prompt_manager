@@ -1040,6 +1040,9 @@ input:where([type='file']):focus {
 .overflow-hidden {
   overflow: hidden;
 }
+.break-all {
+  word-break: break-all;
+}
 .rounded {
   border-radius: 0.25rem;
 }
