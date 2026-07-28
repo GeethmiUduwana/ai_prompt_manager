@@ -1,7 +1,5 @@
 FROM php:8.2-cli
 
-ARG BUILDKIT_INLINE_CACHE=0
-
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
@@ -29,20 +27,7 @@ RUN composer install --no-dev --optimize-autoloader --no-interaction \
 
 EXPOSE 8000
 
-CMD ["sh", "-c", "\
-    echo 'APP_NAME=\"AI Prompt Manager\"' > .env && \
-    echo 'APP_ENV=production' >> .env && \
-    echo 'APP_DEBUG=true' >> .env && \
-    echo 'APP_URL=http://localhost' >> .env && \
-    echo 'LOG_CHANNEL=stack' >> .env && \
-    echo 'LOG_LEVEL=debug' >> .env && \
-    echo 'DB_CONNECTION=sqlite' >> .env && \
-    echo 'DB_DATABASE=/tmp/database.sqlite' >> .env && \
-    echo 'CACHE_DRIVER=file' >> .env && \
-    echo 'SESSION_DRIVER=file' >> .env && \
-    echo 'FILESYSTEM_DRIVER=local' >> .env && \
-    echo 'QUEUE_CONNECTION=sync' >> .env && \
-    php artisan key:generate --force && \
-    mkdir -p /tmp && touch /tmp/database.sqlite && \
-    php artisan migrate --force && \
-    php artisan serve --host=0.0.0.0 --port=${PORT:-8000}"]
+COPY docker-entrypoint.sh /docker-entrypoint.sh
+RUN chmod +x /docker-entrypoint.sh
+
+ENTRYPOINT ["/docker-entrypoint.sh"]
