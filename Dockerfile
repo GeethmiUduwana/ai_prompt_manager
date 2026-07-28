@@ -1,5 +1,7 @@
 FROM php:8.2-cli
 
+ARG CACHEBUST=1
+
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
@@ -19,14 +21,7 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 WORKDIR /app
 COPY . /app
 
-RUN mkdir -p /tmp \
-    && touch /tmp/database.sqlite \
-    && composer install --no-dev --optimize-autoloader --no-interaction \
-    && npm install \
-    && npm run production \
-    && php artisan route:cache \
-    && php artisan view:cache \
-    && rm -f .env \
+RUN rm -f .env \
     && echo "APP_NAME=AI Prompt Manager" > .env \
     && echo "APP_ENV=production" >> .env \
     && echo "APP_DEBUG=false" >> .env \
@@ -39,7 +34,14 @@ RUN mkdir -p /tmp \
     && echo "CACHE_DRIVER=file" >> .env \
     && echo "SESSION_DRIVER=file" >> .env \
     && echo "FILESYSTEM_DRIVER=local" >> .env \
-    && echo "QUEUE_CONNECTION=sync" >> .env
+    && echo "QUEUE_CONNECTION=sync" >> .env \
+    && mkdir -p /tmp \
+    && touch /tmp/database.sqlite \
+    && composer install --no-dev --optimize-autoloader --no-interaction \
+    && npm install \
+    && npm run production \
+    && php artisan route:cache \
+    && php artisan view:cache
 
 EXPOSE 8000
 
