@@ -2,7 +2,7 @@ services:
   - type: web
     name: ai-prompt-manager
     runtime: php
-    buildCommand: touch /tmp/database.sqlite && npm install && npm run production && composer install --no-dev --optimize-autoloader && php artisan migrate --force && php artisan config:cache && php artisan route:cache && php artisan view:cache
+    buildCommand: touch /tmp/database.sqlite && npm install && npm run production && curl -sS https://getcomposer.org/installer | php -- --install-dir=/tmp --filename=composer && /tmp/composer install --no-dev --optimize-autoloader --no-interaction && php artisan migrate --force && php artisan config:cache && php artisan route:cache && php artisan view:cache
     startCommand: php artisan serve --host=0.0.0.0 --port:$PORT
     envVars:
       - key: APP_ENV
