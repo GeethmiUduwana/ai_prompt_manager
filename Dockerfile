@@ -27,8 +27,24 @@ RUN composer install --no-dev --optimize-autoloader --no-interaction \
 
 EXPOSE 8000
 
-CMD ["sh", "-c", "\
-    printf 'APP_NAME=ai-prompt-manager\\nAPP_ENV=production\\nAPP_DEBUG=false\\nAPP_KEY=base64:ZIeZIh28GJrShNHx+c0aDh5gSypaPBASaBiP1p0ckho=\\nAPP_URL=https://ai-prompt-manager-ssxy.onrender.com\\nLOG_CHANNEL=stack\\nLOG_LEVEL=debug\\nDB_CONNECTION=sqlite\\n    DB_DATABASE=/app/database/production.sqlite\\nCACHE_DRIVER=file\\nSESSION_DRIVER=file\\nFILESYSTEM_DRIVER=local\\nQUEUE_CONNECTION=sync\\n' > .env && \
-    mkdir -p /app/database && touch /app/database/production.sqlite && \
-    php artisan migrate --force && \
-    php artisan serve --host=0.0.0.0 --port=${PORT:-8000}"]
+ENTRYPOINT ["sh", "-c", "\
+php -r \"\
+file_put_contents('.env', \"\
+APP_NAME=ai-prompt-manager\\n\
+APP_ENV=production\\n\
+APP_DEBUG=false\\n\
+APP_KEY=base64:ZIeZIh28GJrShNHx+c0aDh5gSypaPBASaBiP1p0ckho=\\n\
+APP_URL=https://ai-prompt-manager-ssxy.onrender.com\\n\
+LOG_CHANNEL=stack\\n\
+LOG_LEVEL=debug\\n\
+DB_CONNECTION=sqlite\\n\
+DB_DATABASE=/app/database/production.sqlite\\n\
+CACHE_DRIVER=file\\n\
+SESSION_DRIVER=file\\n\
+FILESYSTEM_DRIVER=local\\n\
+QUEUE_CONNECTION=sync\\n\
+\");\" && \
+mkdir -p database && \
+touch database/production.sqlite && \
+php artisan migrate --force && \
+exec php artisan serve --host=0.0.0.0 --port=${PORT:-8000}"]
