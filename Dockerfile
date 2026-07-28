@@ -20,7 +20,9 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 WORKDIR /app
 COPY . /app
 
-RUN composer install --no-dev --optimize-autoloader --no-interaction \
+RUN mkdir -p /tmp \
+    && touch /tmp/database.sqlite \
+    && composer install --no-dev --optimize-autoloader --no-interaction \
     && npm install \
     && npm run production \
     && php artisan config:cache \
