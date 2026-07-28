@@ -3,7 +3,6 @@ services:
     name: ai-prompt-manager
     runtime: docker
     dockerfilePath: ./Dockerfile
-    startCommand: mkdir -p /tmp && touch /tmp/database.sqlite && php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=$PORT
     envVars:
       - key: APP_ENV
         value: production
@@ -12,11 +11,9 @@ services:
       - key: APP_KEY
         generateValue: true
       - key: APP_URL
-        value: https://ai-prompt-manager.onrender.com
+        value: https://ai-prompt-manager-ssxy.onrender.com
       - key: DB_CONNECTION
-        value: sqlite
-      - key: DB_DATABASE
-        value: /tmp/database.sqlite
+        value: pgsql
       - key: CACHE_DRIVER
         value: file
       - key: SESSION_DRIVER
@@ -27,3 +24,8 @@ services:
         value: debug
       - key: LOG_DEPRECATIONS_CHANNEL
         value: null
+
+databases:
+  - name: ai-prompt-manager-db
+    databaseName: ai_prompt_manager
+    user: ai_prompt_manager_user
