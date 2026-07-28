@@ -12,7 +12,7 @@ services:
       - key: APP_KEY
         generateValue: true
       - key: APP_URL
-        sync: false
+        value: https://ai-prompt-manager.onrender.com
       - key: DB_CONNECTION
         value: sqlite
       - key: DB_DATABASE
@@ -23,3 +23,7 @@ services:
         value: file
       - key: LOG_CHANNEL
         value: stack
+      - key: LOG_LEVEL
+        value: debug
+      - key: LOG_DEPRECATIONS_CHANNEL
+        value: null
