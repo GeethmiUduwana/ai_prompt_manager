@@ -27,7 +27,4 @@ RUN composer install --no-dev --optimize-autoloader --no-interaction \
 
 EXPOSE 8000
 
-COPY docker-entrypoint.sh /docker-entrypoint.sh
-RUN chmod +x /docker-entrypoint.sh
-
-ENTRYPOINT ["/docker-entrypoint.sh"]
+CMD ["php", "-r", "$key='base64:'.rtrim(base64_encode(random_bytes(32)));file_put_contents('.env',\"APP_NAME=ai-prompt-manager\\nAPP_ENV=production\\nAPP_DEBUG=false\\nAPP_KEY=$key\\nAPP_URL=http://localhost\\nLOG_CHANNEL=stack\\nLOG_LEVEL=debug\\nDB_CONNECTION=sqlite\\nDB_DATABASE=/tmp/database.sqlite\\nCACHE_DRIVER=file\\nSESSION_DRIVER=file\\nFILESYSTEM_DRIVER=local\\nQUEUE_CONNECTION=sync\\n\");exec('mkdir -p /tmp && touch /tmp/database.sqlite && php artisan migrate --force && php artisan serve --host=0.0.0.0 --port='.getenv('PORT')?:'8000');"]
