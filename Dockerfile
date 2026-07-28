@@ -32,7 +32,7 @@ EXPOSE 8000
 CMD ["sh", "-c", "\
     echo 'APP_NAME=\"AI Prompt Manager\"' > .env && \
     echo 'APP_ENV=production' >> .env && \
-    echo 'APP_DEBUG=false' >> .env && \
+    echo 'APP_DEBUG=true' >> .env && \
     echo 'APP_URL=http://localhost' >> .env && \
     echo 'LOG_CHANNEL=stack' >> .env && \
     echo 'LOG_LEVEL=debug' >> .env && \
