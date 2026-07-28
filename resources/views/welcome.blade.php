@@ -211,17 +211,17 @@
         }
 
         .footer-section {
-            background: #0f172a;
-            color: #94a3b8;
+            background: linear-gradient(135deg, #0d6b5e 0%, #11998e 50%, #38ef7d 100%);
+            color: rgba(255,255,255,0.85);
         }
 
         .footer-section a {
-            color: #94a3b8;
+            color: rgba(255,255,255,0.85);
             text-decoration: none;
         }
 
         .footer-section a:hover {
-            color: #38ef7d;
+            color: white;
         }
 
         /* Screenshots */
@@ -815,10 +815,55 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer-section py-4">
-        <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
-            <span>&copy; {{ date('Y') }} AI Prompt Manager. All rights reserved.</span>
-            <span class="mt-2 mt-md-0">Built with Laravel</span>
+    <footer class="footer-section py-5">
+        <div class="container">
+            <div class="row g-4 mb-4">
+                <div class="col-lg-4">
+                    <h5 class="text-white fw-bold mb-3">AI Prompt Manager</h5>
+                    <p class="mb-3" style="opacity:0.85;">Organize, search, and copy your favorite AI prompts in one place. Built for creators, developers, and everyone who uses AI.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-white fs-5">GitHub</a>
+                        <a href="#" class="text-white fs-5">Twitter</a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h6 class="text-white fw-bold mb-3">Product</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#features">Features</a></li>
+                        <li class="mb-2"><a href="#demo">Demo</a></li>
+                        <li class="mb-2"><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h6 class="text-white fw-bold mb-3">Account</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="/login">Login</a></li>
+                        <li class="mb-2"><a href="/register">Register</a></li>
+                        <li class="mb-2"><a href="/dashboard">Dashboard</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h6 class="text-white fw-bold mb-3">Links</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="/prompts">Prompts</a></li>
+                        <li class="mb-2"><a href="/categories">Categories</a></li>
+                        <li class="mb-2"><a href="/favorites">Favorites</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h6 class="text-white fw-bold mb-3">Support</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#faq">Help Center</a></li>
+                        <li class="mb-2"><a href="#">Contact</a></li>
+                        <li class="mb-2"><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr style="border-color:rgba(255,255,255,0.2);">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
+                <span>&copy; {{ date('Y') }} AI Prompt Manager. All rights reserved.</span>
+                <span class="mt-2 mt-md-0">Built with Laravel</span>
+            </div>
         </div>
     </footer>
 
