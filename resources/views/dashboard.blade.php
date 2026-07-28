@@ -88,7 +88,7 @@
                                     {{ Str::limit($prompt->prompt, 80) }}
                                 </p>
                                 <div class="d-flex align-items-center gap-2">
-                                    <span class="badge bg-primary" style="font-size:0.7rem;">{{ $prompt->category->name ?? 'Uncategorized' }}</span>
+                                    <span class="badge bg-success" style="font-size:0.7rem;">{{ $prompt->category->name ?? 'Uncategorized' }}</span>
                                     <small class="text-muted">{{ $prompt->created_at->diffForHumans() }}</small>
                                 </div>
                             </div>
