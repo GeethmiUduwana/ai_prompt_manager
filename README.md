@@ -1,64 +1,210 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# AI Prompt Manager
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A modern web application built with Laravel to organize, manage, and quickly access your AI prompts. Perfect for ChatGPT users, content creators, and developers.
 
-## About Laravel
+## Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **Prompt Management** — Create, view, and organize AI prompts with titles, categories, and descriptions
+- **Categories** — Group prompts by topic (Coding, Writing, Marketing, Images, etc.)
+- **Search** — Find any prompt instantly by title or content
+- **One-Click Copy** — Copy any prompt to your clipboard with a single click
+- **Favorites** — Save your most-used prompts for quick access
+- **User Authentication** — Secure registration, login, and password reset
+- **Green Theme** — Modern green gradient UI across all pages
+- **Responsive Design** — Works on desktop, tablet, and mobile
+- **Landing Page** — Beautiful homepage with features, testimonials, and FAQ
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Tech Stack
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+| Technology | Purpose |
+|---|---|
+| Laravel 9+ | Backend Framework |
+| PHP 8.x | Server-side Language |
+| MySQL | Database |
+| Bootstrap 5 | UI Components |
+| Alpine.js | Interactive Elements |
+| Inter Font | Typography |
+| Laravel Breeze | Authentication Scaffolding |
 
-## Learning Laravel
+## Installation
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Prerequisites
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- PHP 8.1 or higher
+- Composer
+- Node.js & NPM
+- MySQL
+- XAMPP / Laravel Herd / Docker
 
-## Laravel Sponsors
+### Steps
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+1. **Clone the repository**
+```bash
+git clone https://github.com/yourusername/ai_prompt_manager.git
+cd ai_prompt_manager
+```
 
-### Premium Partners
+2. **Install PHP dependencies**
+```bash
+composer install
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+3. **Install JavaScript dependencies**
+```bash
+npm install
+```
 
-## Contributing
+4. **Copy environment file**
+```bash
+cp .env.example .env
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+5. **Generate application key**
+```bash
+php artisan key:generate
+```
 
-## Code of Conduct
+6. **Configure database** in `.env` file
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=ai_prompt_manager
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+7. **Run migrations**
+```bash
+php artisan migrate
+```
 
-## Security Vulnerabilities
+8. **Seed categories**
+```bash
+php artisan db:seed
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+9. **Build assets**
+```bash
+npm run dev
+```
+
+10. **Start the server**
+```bash
+php artisan serve
+```
+
+Visit `http://localhost:8000` in your browser.
+
+## Database Structure
+
+### Tables
+
+| Table | Description |
+|---|---|
+| `users` | User accounts (name, email, password) |
+| `categories` | Prompt categories (name) |
+| `prompts` | AI prompts (title, prompt text, description, category_id, user_id) |
+| `favorites` | User favorites (user_id, prompt_id) |
+
+### Relationships
+
+- A **User** has many **Prompts**
+- A **User** has many **Favorites**
+- A **Category** has many **Prompts**
+- A **Prompt** belongs to a **User** and a **Category**
+- A **Favorite** links a **User** to a **Prompt**
+
+## Pages
+
+| Page | URL | Description |
+|---|---|---|
+| Landing Page | `/` | Homepage with features, screenshots, testimonials, FAQ |
+| Dashboard | `/dashboard` | Stats, recent prompts, quick actions, category breakdown |
+| Prompts List | `/prompts` | All user prompts with search |
+| Create Prompt | `/prompts/create` | Form to add a new prompt |
+| Categories | `/categories` | Manage prompt categories |
+| Favorites | `/favorites` | View saved favorite prompts |
+| Login | `/login` | User login |
+| Register | `/register` | User registration |
+
+## Default Categories
+
+The seeder creates 8 default categories:
+
+1. ChatGPT Prompts
+2. Image Generation
+3. Code Assistant
+4. Content Writing
+5. Marketing
+6. Education
+7. Business
+8. Creative Writing
+
+## Project Structure
+
+```
+ai_prompt_manager/
+├── app/
+│   ├── Http/Controllers/
+│   │   ├── CategoryController.php
+│   │   ├── FavoriteController.php
+│   │   └── PromptController.php
+│   └── Models/
+│       ├── Category.php
+│       ├── Favorite.php
+│       ├── Prompt.php
+│       └── User.php
+├── database/
+│   ├── migrations/
+│   └── seeders/
+├── resources/
+│   ├── views/
+│   │   ├── auth/           (login, register, etc.)
+│   │   ├── categories/
+│   │   ├── components/
+│   │   ├── dashboard.blade.php
+│   │   ├── favorites/
+│   │   ├── layouts/
+│   │   ├── prompts/
+│   │   └── welcome.blade.php
+│   └── css/
+├── routes/
+│   └── web.php
+└── public/
+```
+
+## Screenshots
+
+### Landing Page
+- Hero section with green gradient
+- Feature cards
+- Screenshots demo
+- User testimonials
+- FAQ accordion
+
+### Dashboard
+- Stats cards (Prompts, Categories, Favorites)
+- Recent prompts list
+- Quick action buttons
+- Category progress bars
+
+### Prompts Page
+- Search bar
+- Prompt cards with copy and favorite buttons
+- Category badges
+
+## Available Commands
+
+```bash
+php artisan serve          # Start development server
+php artisan migrate        # Run database migrations
+php artisan db:seed        # Seed default categories
+php artisan view:clear     # Clear compiled views
+npm run dev                # Compile assets (development)
+npm run prod               # Compile assets (production)
+```
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is open-source and available for personal use.
