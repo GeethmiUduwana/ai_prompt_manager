@@ -1,6 +1,6 @@
 FROM php:8.2-cli
 
-ARG CACHEBUST=1
+ARG CACHEBUST=2
 
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
     && apt-get update \
@@ -22,7 +22,7 @@ WORKDIR /app
 COPY . /app
 
 RUN rm -f .env \
-    && echo "APP_NAME=AI Prompt Manager" > .env \
+    && echo "APP_NAME=\"AI Prompt Manager\"" > .env \
     && echo "APP_ENV=production" >> .env \
     && echo "APP_DEBUG=false" >> .env \
     && echo "APP_KEY=" >> .env \
