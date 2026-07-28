@@ -27,14 +27,14 @@
 
             <!-- Email Address -->
             <div>
-                <x-label for="email" :value="__('Email Address')" />
+                <x-label for="email" :value="__('Email Address *')" />
 
                 <x-input id="email" class="block mt-1" type="email" name="email" :value="old('email')" required autofocus placeholder="you@example.com" />
             </div>
 
             <!-- Password -->
             <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
+                <x-label for="password" :value="__('Password *')" />
 
                 <x-input id="password" class="block mt-1"
                                 type="password"
