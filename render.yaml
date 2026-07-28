@@ -12,7 +12,7 @@ services:
       - key: APP_KEY
         generateValue: true
       - key: APP_URL
-        value: https://ai-prompt-manager.onrender.com
+        value: https://ai-prompt-manager-xzrx.onrender.com
       - key: DB_CONNECTION
         value: sqlite
       - key: DB_DATABASE
