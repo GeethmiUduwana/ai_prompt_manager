@@ -42,8 +42,56 @@ class CategoryController extends Controller
 
         ]);
 
+        return back()->with('success', 'Category created successfully!');
 
-        return back();
+    }
+
+
+    public function show(Category $category)
+    {
+
+        $category->load('prompts');
+
+        return view('categories.show', compact('category'));
+
+    }
+
+
+    public function edit(Category $category)
+    {
+
+        return view('categories.edit', compact('category'));
+
+    }
+
+
+    public function update(Request $request, Category $category)
+    {
+
+        $request->validate([
+
+            'name'=>'required'
+
+        ]);
+
+
+        $category->update([
+
+            'name'=>$request->name
+
+        ]);
+
+        return redirect('/categories')->with('success', 'Category updated successfully!');
+
+    }
+
+
+    public function destroy(Category $category)
+    {
+
+        $category->delete();
+
+        return redirect('/categories')->with('success', 'Category deleted successfully!');
 
     }
 

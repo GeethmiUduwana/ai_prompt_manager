@@ -35,7 +35,22 @@
 
         <div class="d-flex justify-content-between align-items-start mb-2">
             <h4 class="fw-bold mb-0">{{ $prompt->title }}</h4>
-            <span class="badge badge-green">{{ $prompt->category->name }}</span>
+            <div class="d-flex gap-2 align-items-center">
+                <span class="badge badge-green">{{ $prompt->category->name }}</span>
+                <a href="/prompts/{{ $prompt->id }}" class="btn btn-sm btn-green-outline" title="View">
+                    View
+                </a>
+                <a href="/prompts/{{ $prompt->id }}/edit" class="btn btn-sm btn-green-outline" title="Edit">
+                    Edit
+                </a>
+                <form action="/prompts/{{ $prompt->id }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this prompt?')">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-sm btn-outline-danger" title="Delete">
+                        Delete
+                    </button>
+                </form>
+            </div>
         </div>
 
         @if($prompt->description)

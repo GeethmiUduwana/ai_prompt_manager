@@ -61,6 +61,62 @@ class PromptController extends Controller
         ]);
 
 
-        return redirect('/prompts');
+        return redirect('/prompts')->with('success', 'Prompt created successfully!');
+
     }
+
+
+    public function show(Prompt $prompt)
+    {
+
+        return view('prompts.show', compact('prompt'));
+
+    }
+
+
+    public function edit(Prompt $prompt)
+    {
+
+        $categories = Category::all();
+
+        return view('prompts.edit', compact('prompt', 'categories'));
+
+    }
+
+
+    public function update(Request $request, Prompt $prompt)
+    {
+
+        $request->validate([
+
+            'title' => 'required',
+            'category_id' => 'required',
+            'prompt' => 'required'
+
+        ]);
+
+
+        $prompt->update([
+
+            'title' => $request->title,
+            'category_id' => $request->category_id,
+            'prompt' => $request->prompt,
+            'description' => $request->description,
+
+        ]);
+
+        return redirect('/prompts')->with('success', 'Prompt updated successfully!');
+
+    }
+
+
+    public function destroy(Prompt $prompt)
+    {
+
+        $prompt->delete();
+
+        return redirect('/prompts')->with('success', 'Prompt deleted successfully!');
+
+    }
+
 }
