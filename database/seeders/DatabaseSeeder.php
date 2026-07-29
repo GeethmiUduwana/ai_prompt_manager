@@ -13,6 +13,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        if (\App\Models\User::count() === 0) {
+            \App\Models\User::create([
+                'name' => 'Admin',
+                'email' => 'admin@example.com',
+                'password' => bcrypt('password'),
+            ]);
+        }
+
         $categories = [
             'ChatGPT Prompts',
             'Image Generation',
@@ -25,7 +33,7 @@ class DatabaseSeeder extends Seeder
         ];
 
         foreach ($categories as $name) {
-            \App\Models\Category::create(['name' => $name]);
+            \App\Models\Category::firstOrCreate(['name' => $name]);
         }
     }
 }
