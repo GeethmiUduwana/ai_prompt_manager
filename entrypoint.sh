@@ -14,10 +14,11 @@ SESSION_DRIVER=file
 FILESYSTEM_DRIVER=local
 QUEUE_CONNECTION=sync
 
-DB_CONNECTION=pgsql
-DATABASE_URL=${DATABASE_URL}
+DB_CONNECTION=sqlite
+DB_DATABASE=/tmp/database.sqlite
 EOF
 
+touch /tmp/database.sqlite
 php artisan migrate --force
 
 exec php artisan serve --host=0.0.0.0 --port=${PORT:-8000}

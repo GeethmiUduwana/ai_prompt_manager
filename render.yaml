@@ -13,7 +13,7 @@ services:
       - key: APP_URL
         value: https://ai-prompt-manager-ssxy.onrender.com
       - key: DB_CONNECTION
-        value: pgsql
+        value: sqlite
       - key: CACHE_DRIVER
         value: file
       - key: SESSION_DRIVER
@@ -24,8 +24,3 @@ services:
         value: debug
       - key: LOG_DEPRECATIONS_CHANNEL
         value: null
-
-databases:
-  - name: ai-prompt-manager-db
-    databaseName: ai_prompt_manager
-    user: ai_prompt_manager_user
