@@ -13,7 +13,8 @@ RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
         libpq-dev \
         nodejs \
     && rm -rf /var/lib/apt/lists/* \
-    && docker-php-ext-install pdo pdo_sqlite pdo_pgsql
+    && docker-php-ext-install -j$(nproc) pdo pdo_pgsql pdo_sqlite \
+    && docker-php-ext-enable pdo_pgsql
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
